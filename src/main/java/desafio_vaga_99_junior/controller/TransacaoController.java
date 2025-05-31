@@ -14,12 +14,12 @@ public class TransacaoController {
     TransacaoService service;
 
     @PostMapping("/transacao")
-    public ResponseEntity<?> receberTransacoes(@RequestBody TransacaoDTO transacao){
+    public ResponseEntity<?> receberTransacoes(@RequestBody TransacaoDTO transacao) {
         return service.criarTransacao(transacao);
     }
 
     @DeleteMapping("/transacao")
-    public ResponseEntity<?> limparTrancacoes(){
+    public ResponseEntity<?> limparTrancacoes() {
         return service.limparTransacoes();
     }
 }

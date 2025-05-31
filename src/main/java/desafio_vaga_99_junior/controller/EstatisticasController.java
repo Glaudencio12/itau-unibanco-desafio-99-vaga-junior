@@ -14,7 +14,7 @@ public class EstatisticasController {
     EstatisticasService service;
 
     @GetMapping("/estatisticas")
-    public EstatisticasDTO calcularEstatisticas(){
+    public EstatisticasDTO calcularEstatisticas() {
         return service.calcularEstatitisticas();
     }
 }

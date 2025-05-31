@@ -4,7 +4,6 @@ import desafio_vaga_99_junior.dto.EstatisticasDTO;
 import desafio_vaga_99_junior.mapper.ObjectMapper;
 import desafio_vaga_99_junior.model.Estatisticas;
 import desafio_vaga_99_junior.model.Transacao;
-import desafio_vaga_99_junior.repository.TransacoesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +21,15 @@ public class EstatisticasService {
     @Autowired
     TransacoesRepository TransacoesRepository;
 
-    public EstatisticasDTO calcularEstatitisticas(){
-        logger.info("Cálculo de TransacoesRepository realizado!");
+    public EstatisticasDTO calcularEstatitisticas() {
+        logger.info("Cálculo de estatisticas realizado!");
         OffsetDateTime agora = OffsetDateTime.now();
         OffsetDateTime limite = agora.minusSeconds(60);
 
         List<Transacao> ultimasTransacoes = new ArrayList<>();
         List<Transacao> listaTransacao = TransacoesRepository.getTransacoes();
 
-        for (Transacao t : listaTransacao){
+        for (Transacao t : listaTransacao) {
             if (t.getDataHora().isAfter(limite) && t.getDataHora().isBefore(agora)) {
                 ultimasTransacoes.add(t);
             }
