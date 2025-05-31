@@ -14,19 +14,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class CustomResponseHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponse> handlerAllExceptions(Exception exception, WebRequest request){
-        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), TimestampFormat.timestampFormat(), request.getDescription(true));
+        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), TimestampFormat.timestampFormat(), request.getDescription(false));
         return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ExceptionResponse> handlerBadRequestException(Exception exception, WebRequest request){
-        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), TimestampFormat.timestampFormat(), request.getDescription(true));
+        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), TimestampFormat.timestampFormat(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UnprocessableEntityException.class)
     public ResponseEntity<ExceptionResponse> handlerUnprocessableEntityException(Exception exception, WebRequest request){
-        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), TimestampFormat.timestampFormat(), request.getDescription(true));
+        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), TimestampFormat.timestampFormat(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }
